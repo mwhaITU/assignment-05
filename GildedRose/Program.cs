@@ -75,7 +75,7 @@ namespace GildedRose
                         }
                     }
                 }
-                else
+                else //if it is a aged brie
                 {
                     if (Items[i].Quality < 50)
                     {
