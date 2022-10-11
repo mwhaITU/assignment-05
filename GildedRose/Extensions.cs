@@ -1,5 +1,6 @@
 public static class Extensions
 {
+    // It would have been preferrable to add an isConjured property to Item, but since we cannot change Item, this is the best we can do.
     public static bool isConjured(this Item item)
     {
         return item.Name.StartsWith("Conjured");

@@ -59,6 +59,8 @@ namespace GildedRose
 
         public void UpdateQuality()
         {
+            // Because we cannot change the Item class, we have an extension4 method "defaultUpdate" which handles the case of a standard item.
+            // If we were able to change the Item class, we would simply have created a virtual method "update"
             foreach(Item item in Items) {
                 if (item is IUpdateable updateable) {
                     updateable.update();
