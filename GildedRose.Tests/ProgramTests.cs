@@ -1,3 +1,5 @@
+using System.Reflection;
+
 namespace GildedRose.Tests;
 
 public class ProgramTests
@@ -26,14 +28,6 @@ public class ProgramTests
         [Fact]
     public void Standard_Item_Updated_Correctly_shouldBe_minus_one() 
     {
-        //Arange
-        var app = new Program()
-        {
-            Items = new List<Item>
-                                          {
-            new Item { Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20 }}                  
-        };
-        
         //Act
         app.UpdateQuality();
 
@@ -44,14 +38,6 @@ public class ProgramTests
 
     [Fact]
     public void Quality_Cant_be_negative(){
-        //Arrange
-        var app = new Program()
-        {
-            Items = new List<Item>
-                                          {
-            new Item { Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20 }}                  
-        };
-
         //Act
         for (var i = 0; i < 22; i++){
             app.UpdateQuality();
@@ -63,14 +49,6 @@ public class ProgramTests
 
     [Fact]
     public void SellDatePassed_quality_degrades_twice_as_fast(){
-          //Arrange
-        var app = new Program()
-        {
-            Items = new List<Item>
-                                          {
-            new Item { Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20 }}                  
-        };
-
         //Act
         for (var i = 0; i < 12; i++){
             app.UpdateQuality();
@@ -159,5 +137,19 @@ public class ProgramTests
 
         app.Items[4].SellIn.Should().Be(2);
         app.Items[4].Quality.Should().Be(4);
+    }
+
+    [Fact]
+    public void Main_Prints_Correct_Output() 
+    {
+        using var writer = new StringWriter();
+        Console.SetOut(writer);
+
+        var program = Assembly.Load(nameof(GildedRose));
+        program.EntryPoint?.Invoke(null, new[] { Array.Empty<string>() });
+
+        var output = writer.GetStringBuilder().ToString().TrimEnd();
+        var readMe = File.ReadAllText("Readme.txt");
+        output.Should().Be(readMe);
     }
 }

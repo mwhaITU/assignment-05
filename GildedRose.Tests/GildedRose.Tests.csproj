@@ -30,4 +30,8 @@
     <ProjectReference Include="..\GildedRose\GildedRose.csproj" />
   </ItemGroup>
 
+  <Target Name="Readme" AfterTargets="AfterBuild">
+  <Copy SourceFiles="Readme.txt" DestinationFolder="$(OutDir)" />
+  </Target>
+
 </Project>
