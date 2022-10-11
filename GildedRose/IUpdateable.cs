@@ -1,0 +1,3 @@
+interface IUpdateable {
+    void update();
+}

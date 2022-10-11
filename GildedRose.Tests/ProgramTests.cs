@@ -13,9 +13,9 @@ public class ProgramTests
                               Items = new List<Item>
                                           {
                 new Item { Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20 },
-                new Item { Name = "Aged Brie", SellIn = 2, Quality = 0 },
-                new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = 0, Quality = 80 },
-                new Item
+                new ValueIncrease { Name = "Aged Brie", SellIn = 2, Quality = 0 },
+                new Legendary { Name = "Sulfuras, Hand of Ragnaros", SellIn = 0, Quality = 80 },
+                new Limited
                 {
                     Name = "Backstage passes to a TAFKAL80ETC concert",
                     SellIn = 15,
